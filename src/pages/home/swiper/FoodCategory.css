@@ -1,0 +1,16 @@
+.swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background-color: black;
+    /* Custom color */
+    opacity: 0.5;
+    /* Ensure bullets are visible */
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #ff5722;
+    opacity: 1;
+    /* Active bullet color */
+    transform: scale(1.2);
+    /* Slightly enlarge the active bullet */
+}
