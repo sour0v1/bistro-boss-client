@@ -3,8 +3,13 @@ import { Helmet } from 'react-helmet-async';
 import banner from '../../assets/menu/banner3.jpg'
 import SectionTitle from '../../components/SectionTitle';
 import OfferedItems from './OfferedItems';
-import DessertItems from '../home/menu/DessertItems';
 import MenuCover from '../../components/MenuCover';
+import FoodItems from '../../components/FoodItems';
+// item background image
+import desertBg from '../../assets/menu/dessert-bg.jpeg'
+import pizzaBg from '../../assets/menu/pizza-bg.jpg'
+import saladBg from '../../assets/menu/salad-bg.jpg'
+import soupBg from '../../assets/menu/soup-bg.jpg'
 
 const Menu = () => {
     return (
@@ -19,7 +24,19 @@ const Menu = () => {
             </section>
             {/* dessert items section */}
             <section className='mb-16 mt-16'>
-                <DessertItems></DessertItems>
+                <FoodItems foodItem={'dessert'} backgroundImage={desertBg} coverHeading={'DESERTS'} coverDescription={'Desert food you will love'}></FoodItems>
+            </section>
+            {/* Pizza items section */}
+            <section className='mb-16 mt-16'>
+                <FoodItems foodItem={'pizza'} backgroundImage={pizzaBg} coverHeading={'PIZZA'} coverDescription={'Pizza you will love'}></FoodItems>
+            </section>
+            {/* Pizza items section */}
+            <section className='mb-16 mt-16'>
+                <FoodItems foodItem={'salad'} backgroundImage={saladBg} coverHeading={'SALAD'} coverDescription={'Salad you will love'}></FoodItems>
+            </section>
+            {/* Pizza items section */}
+            <section className='mb-16 mt-16'>
+                <FoodItems foodItem={'soup'} backgroundImage={soupBg} coverHeading={'SOUP'} coverDescription={'Soup you will love'}></FoodItems>
             </section>
         </div>
     );
