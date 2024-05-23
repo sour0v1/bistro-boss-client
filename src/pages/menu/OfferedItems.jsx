@@ -1,4 +1,5 @@
 import Button from "../../components/Button";
+import MenuItems from "../../components/MenuItems";
 import SectionTitle from "../../components/SectionTitle";
 import useMenu from "../../hooks/useMenu";
 import MenuItem from "../shared/MenuItem";
@@ -14,11 +15,7 @@ const OfferedItems = () => {
                     subHeading={"-----Don't Miss-----"}
                 ></SectionTitle>
             </div>
-            <div className='grid md:grid-cols-2 lg:grid-cols-2 gap-6 p-6 lg:p-0'>
-                {
-                    offeredItems.map(item => <MenuItem item={item} key={item._id}></MenuItem>)
-                }
-            </div>
+            <MenuItems item={offeredItems}></MenuItems>
             <div className="w-full text-center">
                 <Button name={'ORDER YOUR FAVORITE FOOD'}></Button>
             </div>

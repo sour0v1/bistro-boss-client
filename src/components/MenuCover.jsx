@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Cover = ({backgroundImage, heading, description}) => {
+const MenuCover = ({backgroundImage, heading, description}) => {
     return (
         <div className='bg-center bg-cover h-[300px] lg:h-[500px] flex justify-center items-center' style={{
-            backgroundImage : `url(${backgroundImage})`
+            backgroundImage: `url(${backgroundImage})`
         }}>
             <div className='w-2/3 h-1/2 bg-black bg-opacity-50 flex flex-col justify-center items-center gap-4'>
                 <h1 className='text-4xl font-semibold text-white opacity-90'>{heading}</h1>
@@ -13,4 +13,4 @@ const Cover = ({backgroundImage, heading, description}) => {
     );
 };
 
-export default Cover;
+export default MenuCover;
