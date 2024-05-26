@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import useCategory from '../../hooks/useCategory';
@@ -23,11 +23,11 @@ const Items = () => {
     return (
         <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
             <TabList>
-                <Tab>Salad</Tab>
-                <Tab>Pizza</Tab>
-                <Tab>Soups</Tab>
-                <Tab>Deserts</Tab>
-                <Tab>Drinks</Tab>
+                <Tab><Link to={'/shop/salad'}>Salad</Link></Tab>
+                <Tab><Link to={'/shop/pizza'}>Pizza</Link></Tab>
+                <Tab><Link to={'/shop/soups'}>Soups</Link></Tab>
+                <Tab><Link to={'/shop/desserts'}>Dessert</Link></Tab>
+                <Tab><Link to={'/shop/drinks'}>Drinks</Link></Tab>
             </TabList>
             <TabPanel>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9 my-6'>

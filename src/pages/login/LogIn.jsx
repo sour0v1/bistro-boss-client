@@ -5,6 +5,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const LogIn = () => {
     const location = useLocation();
+    const from = location?.state?.from?.pathname || '/'
+    console.log(from);
     const navigate = useNavigate(null);
     // console.log(location)
     const {user, logInUser} = useContext(AuthContext);
@@ -26,7 +28,7 @@ const LogIn = () => {
         logInUser(email, password)
             .then(result =>{
                 console.log(result.user);
-                navigate(location?.state?.from?.pathname || '/')
+                navigate(from)
                 // navigate('/')
             })
             .catch(error =>{
