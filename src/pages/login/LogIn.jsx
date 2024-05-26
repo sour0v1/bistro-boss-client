@@ -26,7 +26,7 @@ const LogIn = () => {
         logInUser(email, password)
             .then(result =>{
                 console.log(result.user);
-                navigate(location?.state?.from?.pathname)
+                navigate(location?.state?.from?.pathname || '/')
                 // navigate('/')
             })
             .catch(error =>{

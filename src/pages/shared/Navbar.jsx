@@ -2,16 +2,17 @@ import { NavLink, useLocation } from "react-router-dom";
 import './Navbar.css'
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
+import { FaCartShopping } from "react-icons/fa6";
 
 const Navbar = () => {
     const location = useLocation();
     const { user, logOut } = useContext(AuthContext);
-    const handleLogOut = () =>{
+    const handleLogOut = () => {
         logOut()
-            .then(() =>{
+            .then(() => {
                 console.log('log out successfully')
             })
-            .catch(error =>{
+            .catch(error => {
                 console.log(error)
             })
     }
@@ -26,14 +27,20 @@ const Navbar = () => {
                     <NavLink to={'/menu'}>Our Menu</NavLink>
                     <NavLink to={'/shop/salad'}>Our Shop</NavLink>
                     <NavLink to={'/secret'}>Secret</NavLink>
+                    <NavLink to={'/cart'}>
+                        <button className="btn">
+                            <FaCartShopping />
+                            <div className="badge">+0</div>
+                        </button>
+                    </NavLink>
                     {
                         user ? <>
-                        <button onClick={handleLogOut}>Log Out</button>
-                    </>:
-                    <>
-                        <NavLink to={'/login'} state={{from : location}} replace>Log In</NavLink>
-                        <NavLink to={'/sign-up'}>Sign Up</NavLink>
-                    </>
+                            <button onClick={handleLogOut}>Log Out</button>
+                        </> :
+                            <>
+                                <NavLink to={'/login'} state={{ from: location }} replace>Log In</NavLink>
+                                <NavLink to={'/sign-up'}>Sign Up</NavLink>
+                            </>
                     }
 
                 </div>
