@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../context/AuthProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
+import SocialLogIn from '../shared/SocialLogIn';
 
 const LogIn = () => {
     const location = useLocation();
@@ -80,6 +81,7 @@ const LogIn = () => {
                             <button disabled={disabled} className="btn btn-primary">Login</button>
                         </div>
                     </form>
+                    <SocialLogIn></SocialLogIn>
                 </div>
             </div>
         </div>

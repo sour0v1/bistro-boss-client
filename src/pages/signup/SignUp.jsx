@@ -1,23 +1,17 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
+import { updateProfile } from 'firebase/auth';
+import auth from '../../firebase/firebase.config';
+import SocialLogIn from '../shared/SocialLogIn';
+// import SocialSignIn from '../shared/SocialSignIn'
+
 // import { useForm } from 'react-hook-form';
 
 const SignUp = () => {
     const { createUser } = useContext(AuthContext);
 
-    // // react-hook-form
-    // const {
-    //     register,
-    //     handleSubmit,
-    //     watch,
-    //     formState: { errors },
-    // } = useForm()
-
-    // const onSubmit = (data) => {
-    //     console.log(data)
-    // }
-    // console.log(watch("example"))
     const handleSignUp = event => {
         event.preventDefault();
         const form = event.target;
@@ -28,11 +22,29 @@ const SignUp = () => {
         createUser(email, password)
             .then(result => {
                 console.log(result.user);
+                const userInfo = {
+                    name: userName,
+                    email
+                }
+                updateProfile(auth.currentUser, {
+                    'displayName': userName
+                })
+                    .then(() => {
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                console.log(res.data)
+                            })
+                            .catch(error => {
+                                console.log(error)
+                            })
+                    })
             })
             .catch(error => {
                 console.log(error);
             })
     }
+    // handle Google sign up
+    
 
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -46,13 +58,13 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text" placeholder="name" className="input input-bordered" name='name'/>
+                            <input type="text" placeholder="name" className="input input-bordered" name='name' />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" placeholder="email" className="input input-bordered" name='email'/>
+                            <input type="email" placeholder="email" className="input input-bordered" name='email' />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -66,10 +78,13 @@ const SignUp = () => {
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Sign Up</button>
                         </div>
-                        <label className="label">
-                            <span>Already user?<Link to={'/login'} className="link link-hover underline mx-2 text-blue-500">Log In</Link></span>
-                        </label>
+
                     </form>
+                    {/*  */}
+                   <SocialLogIn></SocialLogIn>
+                    <label className="label mx-9">
+                        <span>Already user?<Link to={'/login'} className="link link-hover underline mx-2 text-blue-500">Log In</Link></span>
+                    </label>
                 </div>
             </div>
         </div>

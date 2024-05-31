@@ -4,10 +4,12 @@ import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import useCart from "../../hooks/useCart";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MenuItem2 = ({ item }) => {
+    const axiosSecure = useAxiosSecure();
     const [, refetch] = useCart();
-    const { user,} = useContext(AuthContext);
+    const { user, } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     // console.log(item);
@@ -16,13 +18,14 @@ const MenuItem2 = ({ item }) => {
         itemId: _id,
         email: user?.email,
         itemName: name,
-        itemImage: image
+        itemImage: image,
+        price
     }
 
     const handleCart = () => {
         if (user && user.email) {
             console.log('You have permission');
-            axios.post('http://localhost:5000/cart', cartInfo)
+            axiosSecure.post('/cart', cartInfo)
                 .then(res => {
                     console.log(res.data)
                     refetch();
