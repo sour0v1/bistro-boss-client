@@ -11,6 +11,7 @@ import SocialLogIn from '../shared/SocialLogIn';
 
 const SignUp = () => {
     const { createUser } = useContext(AuthContext);
+    const axiosPublic = useAxiosPublic();
 
     const handleSignUp = event => {
         event.preventDefault();

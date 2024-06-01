@@ -13,14 +13,29 @@ const AllUser = () => {
             return res.data;
         }
     })
+    // handle make admin
+    const handleMakeAdmin = (id, name) => {
+        axiosSecure.patch(`/users/admin/${id}`)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.modifiedCount > 0) {
+                    alert(`${name} set as admin`);
+                    refetch();
+                }
+
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
     // handle delete
-    const handleDeleteUser = id =>{
+    const handleDeleteUser = id => {
         axiosSecure.delete(`/users/${id}`)
-            .then(res =>{
+            .then(res => {
                 console.log(res.data);
                 refetch();
             })
-            .catch(error =>{
+            .catch(error => {
                 console.log(error);
             })
     }
@@ -50,8 +65,12 @@ const AllUser = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>
-                                    <button className='text-xl'>
-                                        <FaUsers></FaUsers>
+                                    <button onClick={() => handleMakeAdmin(user._id, user.name)} className='text-xl'>
+                                        {
+                                            user.role === 'admin' ?
+                                                <span className='text-sm'>admin</span> :
+                                                <FaUsers></FaUsers>
+                                        }
                                     </button>
                                 </td>
                                 <td>
