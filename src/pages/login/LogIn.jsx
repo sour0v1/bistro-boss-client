@@ -29,8 +29,12 @@ const LogIn = () => {
         logInUser(email, password)
             .then(result =>{
                 console.log(result.user);
+               if(from){
                 navigate(from)
-                // navigate('/')
+               }
+               else{
+                navigate('/');
+               }
             })
             .catch(error =>{
                 console.log(error)
@@ -78,7 +82,7 @@ const LogIn = () => {
                             </div>
                         </div>
                         <div className="form-control mt-6">
-                            <button disabled={disabled} className="btn btn-primary">Login</button>
+                            <button disabled={false} className="btn btn-primary">Login</button>
                         </div>
                     </form>
                     <SocialLogIn></SocialLogIn>
