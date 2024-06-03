@@ -6,7 +6,7 @@ import MenuItems from './MenuItems';
 import Button from './Button';
 
 const FoodItems = ({ foodItem, backgroundImage, coverHeading, coverDescription }) => {
-    const menu = useMenu();
+    const [menu] = useMenu();
     const categoryItems = menu.filter(item => item.category === foodItem)
     return (
         <div>

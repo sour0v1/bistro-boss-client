@@ -5,7 +5,7 @@ import useMenu from "../../hooks/useMenu";
 import MenuItem from "../shared/MenuItem";
 
 const OfferedItems = () => {
-    const menu = useMenu();
+    const [menu] = useMenu();
     const offeredItems = menu.filter(item => item.category === 'offered');
     return (
         <div className="space-y-9">

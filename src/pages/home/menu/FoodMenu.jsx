@@ -3,7 +3,7 @@ import MenuItem from '../../shared/MenuItem';
 import useMenu from '../../../hooks/useMenu';
 
 const FoodMenu = () => {
-    const menu = useMenu();
+    const [menu] = useMenu();
     const popularMenu = menu.filter(item => item.category === 'popular');
     console.log(menu);
     return (
