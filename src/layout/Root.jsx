@@ -5,9 +5,9 @@ import Footer from '../pages/shared/Footer';
 
 const Root = () => {
     const location = useLocation();
-    console.log(location);
+    // console.log(location);
     const logInLocation = location.pathname.includes('login') || location.pathname.includes('sign-up')
-    console.log(logInLocation)
+    // console.log(logInLocation)
     return (
         <div className='max-w-6xl mx-auto'>
             {

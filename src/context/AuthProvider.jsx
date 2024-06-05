@@ -23,6 +23,7 @@ const AuthProvider = ({ children }) => {
 
     // log in user
     const logInUser = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
@@ -34,8 +35,9 @@ const AuthProvider = ({ children }) => {
                 const userInfo = { email: currentUser.email }
                 axiosPublic.post('/jwt', userInfo)
                     .then(res => {
-                        console.log(res.data);
-                        localStorage.setItem('access-token', res.data.token)
+                        console.log('hh',res.data);
+                        localStorage.setItem('access-token', res.data.token);
+                        setLoading(false);
                     })
                     .catch(error => {
                         console.log(error)
@@ -45,8 +47,9 @@ const AuthProvider = ({ children }) => {
             else {
                 console.log('logged out')
                 localStorage.removeItem('access-token');
+                setLoading(false);
             }
-            setLoading(false);
+            
 
         })
         return () => {

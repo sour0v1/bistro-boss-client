@@ -4,9 +4,11 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import { FaCartShopping } from "react-icons/fa6";
 import useCart from "../../hooks/useCart";
+import useAdmin from "../../hooks/useAdmin";
 
 const Navbar = () => {
     const [cart] = useCart();
+    const [isAdmin] = useAdmin();
     console.log(cart);
     const navigate = useNavigate();
     const location = useLocation();
@@ -29,7 +31,10 @@ const Navbar = () => {
                 <div id="nav" className="flex justify-center items-center gap-6">
                     <NavLink to={'/'}>Home</NavLink>
                     <NavLink to={'/contact'}>Contact Us</NavLink>
-                    <NavLink to={'/dashboard'}>Dashboard</NavLink>
+                    {
+                        user && !isAdmin ? <NavLink to={'dashboard/user/home'}>Dashboard</NavLink> :
+                        user && isAdmin && <NavLink to={'dashboard/admin/home'}>Dashboard</NavLink>
+                    }
                     <NavLink to={'/menu'}>Our Menu</NavLink>
                     <NavLink to={'/shop/salad'}>Our Shop</NavLink>
                     <NavLink to={'/secret'}>Secret</NavLink>

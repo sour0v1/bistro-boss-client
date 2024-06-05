@@ -24,11 +24,11 @@ const LogIn = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        // console.log(email, password);
 
         logInUser(email, password)
             .then(result =>{
-                console.log(result.user);
+                console.log('logged in user - ',result.user);
                if(from){
                 navigate(from)
                }

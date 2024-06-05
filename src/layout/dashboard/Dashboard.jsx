@@ -12,7 +12,7 @@ const Dashboard = () => {
                         <ul className='p-9 space-y-4'>
                             <li><NavLink to={'/'}>Admin Home</NavLink></li>
                             <li><NavLink to={'add-item'}>Add Item</NavLink></li>
-                            <li><NavLink to={'/'}>Manage Items</NavLink></li>
+                            <li><NavLink to={'manage-items'}>Manage Items</NavLink></li>
                             <li><NavLink to={'/'}>Manage Bookings</NavLink></li>
                             <li><NavLink to={'users'}>All Users</NavLink></li>
                         </ul>
