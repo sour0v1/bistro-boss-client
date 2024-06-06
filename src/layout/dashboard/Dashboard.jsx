@@ -10,7 +10,7 @@ const Dashboard = () => {
                 {
                     isAdmin ? <>
                         <ul className='p-9 space-y-4'>
-                            <li><NavLink to={'/'}>Admin Home</NavLink></li>
+                            <li><NavLink to={'admin/home'}>Admin Home</NavLink></li>
                             <li><NavLink to={'add-item'}>Add Item</NavLink></li>
                             <li><NavLink to={'manage-items'}>Manage Items</NavLink></li>
                             <li><NavLink to={'/'}>Manage Bookings</NavLink></li>
@@ -19,7 +19,7 @@ const Dashboard = () => {
                     </> :
                         <>
                             <ul className='p-9 space-y-4'>
-                                <li><NavLink to={'/'}>User Home</NavLink></li>
+                                <li><NavLink to={'user/home'}>User Home</NavLink></li>
                                 <li><NavLink to={'/'}>Reservation</NavLink></li>
                                 <li><NavLink to={'/'}>Payment History</NavLink></li>
                                 <li><NavLink to={'/dashboard/cart'}>My Cart</NavLink></li>

@@ -9,6 +9,8 @@ const MyCart = () => {
     const totalPrice = cart?.reduce((acc, item) => {
         return acc + item.price;
     }, 0)
+    console.log(totalPrice)
+    console.log(isPending)
     if(isPending){
         <p>loading...</p>
     }
